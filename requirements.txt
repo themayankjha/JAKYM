@@ -1,2 +1,4 @@
 youtube_dl==2021.3.14
 pydub==0.25.1
+simpleaudio==1.0.4
+
