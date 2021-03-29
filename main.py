@@ -1,14 +1,37 @@
 import downloader
 import player
 import os
+import threading
 
 
-link="https://www.youtube.com/watch?v=q7_DqgVDKkM"
+queue=[]
 
-meta=downloader.download(link)
-print("Currently Playing : " + meta['title'])
+def play(meta):
+    print("Currently Playing : " + meta['title'])
+    player.playmusic('downloads/'+meta['id'])
+    os.remove('downloads/'+meta['id']) 
 
-player.playmusic(meta['id'])
-os.remove(meta['id']) 
+def getquery(queue):
+    query = input("Enter Song Name or Link: ")
+    return query+" song"
+
+def doqueue():
+    for query in queue:
+        meta=downloader.download(query)
+        play(meta)
+    
+
+t1 = threading.Thread(target=doqueue, args=(), daemon=True)
+
+while True:
+    query=getquery(queue)
+    queue.append(query)
+    try:
+        t1.start()
+    except:
+        pass
+
+
+
 
     
