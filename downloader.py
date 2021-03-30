@@ -5,7 +5,7 @@ from requests import get
 
 def download(link):
     options={
-    'format': 'aac/mp3/ogg/wav/3gp/mp4',
+    'format': 'aac/mp3/ogg/wav/3gp/m4a/mp4',
     'outtmpl': 'downloads/%(id)s',
     'quiet':'True'
     }
