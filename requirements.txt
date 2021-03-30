@@ -1,4 +1,4 @@
 youtube_dl==2021.3.14
+pyfiglet==0.8.post1
+requests==2.24.0
 pydub==0.25.1
-simpleaudio==1.0.4
-
