@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="jakym",
-    version="0.1",
+    version="0.1.1",
     author="Mayank Jha",
     author_email="jhamayank159@gmail.com",
     description="Just Another Konsole YouTube-Music",
@@ -23,7 +23,6 @@ setuptools.setup(
           'requests',
           'pydub',
           'termcolor',
-          'simpleaudio',
       ],
     packages=setuptools.find_packages(),
     entry_points={
