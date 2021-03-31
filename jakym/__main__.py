@@ -1,8 +1,9 @@
-import downloader
-import player
+import jakym.downloader as downloader
+import jakym.player as player
 import os , glob
 import threading
-import pyfiglet
+from pyfiglet import Figlet
+from termcolor import colored
 
 class Playlist:
 
@@ -21,7 +22,7 @@ class Playlist:
         return meta
 
     def songplayer(self,meta):
-        print("Currently Playing : " + meta['title'])
+        print(colored("Currently Playing : " + meta['title'],'yellow'))
         player.playmusic('downloads/'+meta['id'])
 
 musicplaylist = Playlist()
@@ -42,28 +43,32 @@ def play():
             pass
 
 def queue():
-        songrequest=""
-        while songrequest!="exit":
-            songrequest=input("Enter your Song Name or Youtube Link: ")
-            musicplaylist.songqueuer(songrequest)
-            try:
-                playthread.start()
-            except:
-                pass
+    songrequest=""
+    while songrequest!="exit":
+        songrequest=input("")
+        musicplaylist.songqueuer(songrequest)
+        try:
+            playthread.start()
+        except:
+            pass
 
-queuethread=threading.Thread(target=queue)
 playthread=threading.Thread(target=play,daemon=True)
+queuethread=threading.Thread(target=queue)
 
-f = pyfiglet.Figlet(font='slant')
-print(f.renderText('Console YouTube Music'))
+def main():
+    f = Figlet(font='banner3-D')
+    print(" ")
+    print(colored(f.renderText('JAKYM'),'cyan'))
+    print("\t\t\t\t\t- by Lex")
 
-queuethread.start()
-queuethread.join()
+    queuethread.start()
+    queuethread.join()
 
-cleandownload()
+    cleandownload()
 
 
-
+if __name__ == "__main__":
+    main()
 
 
 
