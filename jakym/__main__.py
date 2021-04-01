@@ -36,8 +36,12 @@ def play():
     while True:
         if musicplaylist.playlist:
             song=musicplaylist.playlistmanager()
-            meta=musicplaylist.songdownloader(song)
-            musicplaylist.songplayer(meta)
+            try:
+                meta=musicplaylist.songdownloader(song)
+            except:
+                print(colored("Error downloading "+song,'red'))
+            else:
+                musicplaylist.songplayer(meta)
             cleandownload()
         else:
             pass
@@ -46,7 +50,12 @@ def queue():
     songrequest=""
     while songrequest!="exit":
         songrequest=input("")
-        musicplaylist.songqueuer(songrequest)
+        if songrequest=="spotify":
+            spotifyplaylist=input("Enter Playlist: ")
+            spotifyplaylist=downloader.spotifyparser(spotifyplaylist)
+            musicplaylist.playlist.extend(spotifyplaylist)
+        else:
+            musicplaylist.songqueuer(songrequest)
         try:
             playthread.start()
         except:
@@ -65,6 +74,7 @@ def main():
     queuethread.join()
 
     cleandownload()
+    os.rmdir('downloads')
 
 
 if __name__ == "__main__":
