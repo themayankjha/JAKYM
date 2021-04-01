@@ -1,5 +1,7 @@
 # Just Another Konsole YouTube-Music
 
+[![Downloads](https://static.pepy.tech/personalized-badge/jakym?period=total&units=international_system&left_color=blue&right_color=lightgrey&left_text=Total+Installs)](https://pepy.tech/project/jakym)
+
 ## Overview
 
 I wanted to create this application so that I could use the command line to play music easily. I often play games and listen to music simultaneously but using either Spotify or playing music in a browser takes much-needed resources from my CPU and RAM.
@@ -8,7 +10,7 @@ I have spent a lot of time looking through numerous CLI based music players. But
 
 So I present to you JAKYM, Just Another Konsole YouTube-Music.
 
-![Screenshot](img/screenshot.png?raw=true "screenshot")
+![Screenshot](img/screenshot.gif?raw=true "screenshot")
 
 ## Usage
 
@@ -17,7 +19,7 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 - Type '''spotify'' to play music using spotify playlist or enter a songname to search for song or enter its youtube link.
 - jekym will queue all the songs once you type them and play them one by one
 
-## Instalation
+## Installation
 
 ### Installing ffmpeg
 
@@ -30,7 +32,7 @@ ffmpeg is required for this program to work correctly. Install ffmpeg by followi
 
 simpleaudio is an optional pydub dependency, it works fine on linux without installing but gives major issues on windows.
 
-### On Linux
+#### On Linux
 
 - Install Dependencies by ```sudo apt-get install -y python3-dev libasound2-dev```
 - Install with: ```pip install simpleaudio```
