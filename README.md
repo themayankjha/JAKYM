@@ -16,7 +16,7 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 
 - Run the program using jakym command ``` jakym ``` or call it as a python module ```python -m jakym```
 - This will open up the jakym command window.
-- Type '''spotify'' to play music using spotify playlist or enter a songname to search for song or enter its youtube link.
+- Type ```spotify``` to play music using spotify playlist or enter a songname to search for song or enter its youtube link.
 - jekym will queue all the songs once you type them and play them one by one
 
 ## Installation
@@ -73,4 +73,4 @@ Enjoy jakym
 
 Copyright (c) 2021 [Mayank Jha](https://github.com/themayankjha)
 
-License - [GNU GPL v3](License)
+License - [GNU GPL v3](LICENSE)
