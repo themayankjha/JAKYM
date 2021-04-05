@@ -28,6 +28,42 @@ def spotifyparser(url):
 
     return tracklist
 
+class MyLogger(object):
+    def debug(self, msg):
+        if msg.startswith("[download] Downloading video"):
+            numlist=re.findall('[0-9]+', msg)
+            print("Processing Song: "+numlist[0]+"/"+numlist[1])
+    def warning(self, msg):
+        pass
+
+    def error(self, msg):
+        pass
+
+def ytplaylistparser(url,beg):
+    
+    options={
+    'logger': MyLogger(),
+    'playlist_items':f'{beg}-{beg+4}'
+    }
+    print("Pinging Youtube")
+    with YoutubeDL(options) as ytdl:
+        try:
+            meta = ytdl.extract_info(url, download=False)
+        except:
+            pass
+    
+    tracklist=[]
+
+    tracker=0
+    for song in meta['entries']:
+        tracklist.append(song['webpage_url'])
+        tracker=tracker+1
+    if tracker==5:
+        beg=beg+tracker
+    else:
+        beg=-1
+    return tracklist,beg
+
 def download(link):
     options={
     'format': 'aac/mp3/ogg/wav/3gp/m4a/mp4',
@@ -39,9 +75,8 @@ def download(link):
         try:
             get(link)
         except:
-            meta = ytdl.extract_info(f"ytsearch:{link}", download=True)['entries'][0]
+            meta=ytdl.extract_info(f"ytsearch:{link}", download=True)['entries'][0]
         else:
-            meta = ytdl.extract_info(link, download=True)
+            meta=ytdl.extract_info(link, download=True)
     print("Done Downloading")
     return meta
-

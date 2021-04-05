@@ -14,12 +14,18 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 
 ## Usage
 
-- Run the program using jakym command ``` jakym ``` or call it as a python module ```python -m jakym```
+- Run the program by using jakym command ``` jakym ``` or alternatively call it as a python module ```python -m jakym```
 - This will open up the jakym command window.
-- Type ```spotify``` to play music using spotify playlist or enter a songname to search for song or enter its youtube link.
-- jekym will queue all the songs once you type them and play them one by one
+- Type ```spotify``` to play music using spotify playlist
+- Type ```youtube``` to play music using youtube playlist
+- Enter a songname in command window to search for song or just enter its youtube link to play directly from a link.
+- Jakym will queue the song once you type it and allow you to add the next song.
+- The queue operates independent of the command window and plays the song on a separate thread.
+- To exit the command window and hence the application simply type ```exit```.
 
 ## Installation
+
+To Update jakym simply run ```pip install --upgrade jakym```
 
 ### Installing ffmpeg
 
@@ -28,9 +34,9 @@ ffmpeg is required for this program to work correctly. Install ffmpeg by followi
 - On Linux - <https://www.tecmint.com/install-ffmpeg-in-linux/>
 - On Windows - <https://www.wikihow.com/Install-FFmpeg-on-Windows>
 
-### Installing simpleaudio (Optional on Linux)
+### Installing simpleaudio
 
-simpleaudio is an optional pydub dependency, it works fine on linux without installing but gives major issues on windows.
+simpleaudio is an optional pydub dependency, however as it is essential for proper working of jakym. Not installing simpleaudio gives major issues on both Linux and Windows.
 
 #### On Linux
 
@@ -56,13 +62,14 @@ Enjoy jakym
 
 - The program starts and runs two threads, one to input music into the playlist and the other to iterate over the playlist and download the corresponding music and play it.
 - The youtube-dl library does most of the heavy lifting of both parsing links and downloading them into a suitable file format.
-- The pydub and simpleaudio libraries provide cross-platform audio playback without any issues though setting up simpleaudio on windows takes a different approach.
+- The pydub and simpleaudio libraries provide cross-platform audio playback without any issues but setting up simpleaudio on windows and Linux take a different approach.
 - The program runs until user specifically types exit.
 
 ## Version history
 
 | Version     | Improvements    |
 | ----------- | -----------     |
+| 0.3         | Added Youtube Playlist support, Improved Readme |
 | 0.2         | Added Spotify playlist support, Bug fixes |
 | 0.1.1       | Improved documentation, Command line integration |
 | 0.1         | Initial release |

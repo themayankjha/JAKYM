@@ -29,8 +29,11 @@ musicplaylist = Playlist()
 
 def cleandownload():
     dir ='downloads'
-    for file in os.scandir(dir):
-        os.remove(file.path)
+    try:
+        for file in os.scandir(dir):
+            os.remove(file.path)
+    except:
+        print("Failed Cleaning")
 
 def play():
     while True:
@@ -54,6 +57,16 @@ def queue():
             spotifyplaylist=input("Enter Playlist: ")
             spotifyplaylist=downloader.spotifyparser(spotifyplaylist)
             musicplaylist.playlist.extend(spotifyplaylist)
+        if songrequest=="youtube":
+            ytplaylist=input("Enter Playlist: ")
+            beg=1
+            while beg!=-1:
+                tempytplaylist,beg=downloader.ytplaylistparser(ytplaylist,beg)
+                musicplaylist.playlist.extend(tempytplaylist)
+                try:
+                    playthread.start()
+                except:
+                    pass
         else:
             musicplaylist.songqueuer(songrequest)
         try:
