@@ -2,6 +2,7 @@ import jakym.downloader as downloader
 import jakym.player as player
 import os , glob
 import threading
+import random
 from pyfiglet import Figlet
 from termcolor import colored
 
@@ -20,6 +21,10 @@ class Playlist:
     def songdownloader(self,song):
         meta=downloader.download(song)
         return meta
+    
+    def shuffler(self):
+            random.shuffle(self.playlist)
+            print("Queue Shuffled")
 
     def songplayer(self,meta):
         print(colored("Currently Playing : " + meta['title'],'yellow'))
@@ -53,11 +58,16 @@ def queue():
     songrequest=""
     while songrequest!="exit":
         songrequest=input("")
-        if songrequest=="spotify":
+        if songrequest=="shuffle":
+            if musicplaylist.playlist:
+                musicplaylist.shuffler()
+            else:
+                print("Cannot Shuffle Empty Queue")
+        elif songrequest=="spotify":
             spotifyplaylist=input("Enter Playlist: ")
             spotifyplaylist=downloader.spotifyparser(spotifyplaylist)
             musicplaylist.playlist.extend(spotifyplaylist)
-        if songrequest=="youtube":
+        elif songrequest=="youtube":
             ytplaylist=input("Enter Playlist: ")
             beg=1
             while beg!=-1:
@@ -78,6 +88,10 @@ playthread=threading.Thread(target=play,daemon=True)
 queuethread=threading.Thread(target=queue)
 
 def main():
+    try:
+        os.mkdir('downloads')
+    except:
+        pass
     f = Figlet(font='banner3-D')
     print(" ")
     print(colored(f.renderText('JAKYM'),'cyan'))
@@ -87,7 +101,10 @@ def main():
     queuethread.join()
 
     cleandownload()
-    os.rmdir('downloads')
+    try:
+        os.rmdir('downloads')
+    except:
+        pass
 
 
 if __name__ == "__main__":

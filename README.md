@@ -20,6 +20,7 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 - Type ```youtube``` to play music using youtube playlist
 - Enter a songname in command window to search for song or just enter its youtube link to play directly from a link.
 - Jakym will queue the song once you type it and allow you to add the next song.
+- Type ```shuffle``` to shuffle your queue
 - The queue operates independent of the command window and plays the song on a separate thread.
 - To exit the command window and hence the application simply type ```exit```.
 
@@ -69,6 +70,7 @@ Enjoy jakym
 
 | Version     | Improvements    |
 | ----------- | -----------     |
+| 0.3.1       | Bug fixes and Shuffle |
 | 0.3         | Added Youtube Playlist support, Improved Readme |
 | 0.2         | Added Spotify playlist support, Bug fixes |
 | 0.1.1       | Improved documentation, Command line integration |
