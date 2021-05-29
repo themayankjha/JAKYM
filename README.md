@@ -6,7 +6,7 @@
 
 I wanted to create this application so that I could use the command line to play music easily. I often play games and listen to music simultaneously but using either Spotify or playing music in a browser takes much-needed resources from my CPU and RAM.
 
-I have spent a lot of time looking through numerous CLI based music players. But they either required setting up lots of things, needed premium features to function or sometimes flat out didn't work even after tinkering with them for hours. Hence I thought that instead of looking for a solution, I should code it myself.
+I have spent a lot of time looking through numerous CLI based music players. But they either required setting up lots of things or needed premium features to function and sometimes flat out didn't work, even after tinkering for hours. Hence nstead of looking for a solution, I thought that I should code it myself.
 
 So I present to you JAKYM, Just Another Konsole YouTube-Music.
 
@@ -14,8 +14,17 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 
 ## Usage
 
-- Run the program by using jakym command ``` jakym ``` or alternatively call it as a python module ```python -m jakym```
-- This will open up the jakym command window.
+### Using Command Line Options
+
+- Run the program by using jakym command ``` jakym ```.You can also specify arguments to easily play a playlist or song. The available options can be seen via ```jakym -h```
+- Use ```jakym -s "link"``` or ```jakym -y "link"``` to instanly start up by queuing a playlist without having to use the command window.
+- You can also use ```jakym -p "song 1" "song 2" "song 3"``` to queue up multiple songs.
+- This will launch into jakym command window.
+![Help_Image](img/help.png?raw=true "screenshot")
+
+### Using Jakym Command Window
+
+- The program opens up into the jakym command window.
 - Type ```spotify``` to play music using spotify playlist
 - Type ```youtube``` to play music using youtube playlist
 - Enter a songname in command window to search for song or just enter its youtube link to play directly from a link.
@@ -70,6 +79,7 @@ Enjoy jakym
 
 | Version     | Improvements    |
 | ----------- | -----------     |
+| 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments |
 | 0.3.1       | Bug fixes and Shuffle |
 | 0.3         | Added Youtube Playlist support, Improved Readme |
 | 0.2         | Added Spotify playlist support, Bug fixes |

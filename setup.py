@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="jakym",
-    version="0.3.1",
+    version="0.3.2",
     author="Mayank Jha",
     author_email="jhamayank159@gmail.com",
     description="Just Another Konsole YouTube-Music",
@@ -24,6 +24,7 @@ setuptools.setup(
           'pydub',
           'termcolor',
           'beautifulsoup4',
+          'colorama',
           'lxml',
       ],
     packages=setuptools.find_packages(),

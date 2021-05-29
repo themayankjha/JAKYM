@@ -1,58 +1,41 @@
 import jakym.downloader as downloader
-import jakym.player as player
-import os , glob
-import threading
-import random
+from jakym.playlistmanager import Playlist,cleandownload,makedownload,removedownload
+
+import threading, argparse
+
 from pyfiglet import Figlet
+from colorama import init,deinit
 from termcolor import colored
 
-class Playlist:
-
-    def __init__(self):
-        self.playlist=[]
-
-    def playlistmanager(self):
-        song=self.playlist.pop(0)
-        return song
-
-    def songqueuer(self,query):
-        self.playlist.append(query+" song")
-
-    def songdownloader(self,song):
-        meta=downloader.download(song)
-        return meta
-    
-    def shuffler(self):
-            random.shuffle(self.playlist)
-            print("Queue Shuffled")
-
-    def songplayer(self,meta):
-        print(colored("Currently Playing : " + meta['title'],'yellow'))
-        player.playmusic('downloads/'+meta['id'])
-
 musicplaylist = Playlist()
+songavailable = threading.Event()
 
-def cleandownload():
-    dir ='downloads'
-    try:
-        for file in os.scandir(dir):
-            os.remove(file.path)
-    except:
-        print("Failed Cleaning")
+def playspotify(link):
+    spotifyplaylist=downloader.spotifyparser(link)
+    musicplaylist.playlist.extend(spotifyplaylist)
+    songavailable.set()
+
+def playyoutube(link):
+    beg=1
+    while beg!=-1:
+        tempytplaylist,beg=downloader.ytplaylistparser(link,beg)
+        musicplaylist.playlist.extend(tempytplaylist)
+        songavailable.set()
 
 def play():
     while True:
         if musicplaylist.playlist:
-            song=musicplaylist.playlistmanager()
+            song=musicplaylist.returnsong()
             try:
-                meta=musicplaylist.songdownloader(song)
+                meta=musicplaylist.downloadsong(song)
             except:
                 print(colored("Error downloading "+song,'red'))
             else:
-                musicplaylist.songplayer(meta)
+                musicplaylist.playsong(meta)
             cleandownload()
         else:
-            pass
+            songavailable.clear()
+            songavailable.wait()
 
 def queue():
     songrequest=""
@@ -60,51 +43,58 @@ def queue():
         songrequest=input("")
         if songrequest=="shuffle":
             if musicplaylist.playlist:
-                musicplaylist.shuffler()
+                musicplaylist.shuffleplaylist()
             else:
                 print("Cannot Shuffle Empty Queue")
         elif songrequest=="spotify":
-            spotifyplaylist=input("Enter Playlist: ")
-            spotifyplaylist=downloader.spotifyparser(spotifyplaylist)
-            musicplaylist.playlist.extend(spotifyplaylist)
+            spotifyplaylistlink=input("Enter Playlist: ")
+            playspotify(spotifyplaylistlink)
         elif songrequest=="youtube":
             ytplaylist=input("Enter Playlist: ")
-            beg=1
-            while beg!=-1:
-                tempytplaylist,beg=downloader.ytplaylistparser(ytplaylist,beg)
-                musicplaylist.playlist.extend(tempytplaylist)
-                try:
-                    playthread.start()
-                except:
-                    pass
+            playyoutube(ytplaylist)           
         else:
-            musicplaylist.songqueuer(songrequest)
-        try:
-            playthread.start()
-        except:
-            pass
+            musicplaylist.addsong(songrequest)
+            songavailable.set()
+        
 
 playthread=threading.Thread(target=play,daemon=True)
 queuethread=threading.Thread(target=queue)
 
 def main():
-    try:
-        os.mkdir('downloads')
-    except:
-        pass
+    makedownload()
+    init()
+
     f = Figlet(font='banner3-D')
     print(" ")
     print(colored(f.renderText('JAKYM'),'cyan'))
-    print("\t\t\t\t\t- by Lex")
+    print("\t\t\t\t\t\t- by Lex")
+
+    parser = argparse.ArgumentParser(prog='jakym', description='Just Another Konsole Youtube-Music',epilog='Thank you for using Jakym! :)')
+    parser.version = '0.3.2'
+    parser.add_argument("-s", action='store', metavar='link', help="Play a Spotify Playlist")
+    parser.add_argument("-y", action='store', metavar='link', help="Play a Youtube Playlist")
+    parser.add_argument("-p", action='store', nargs='+', metavar='song', help="Play multiple youtube links or a songs")
+    parser.add_argument('-v', action='version')
+    args = parser.parse_args()
 
     queuethread.start()
+    playthread.start()
+
+    if args.s:
+        playspotify(args.s)
+    if args.y:
+        playyoutube(args.y)
+    if args.p:
+        for songs in args.p:
+            musicplaylist.addsong(songs)
+        songavailable.set()
+    
+
     queuethread.join()
 
     cleandownload()
-    try:
-        os.rmdir('downloads')
-    except:
-        pass
+    deinit()
+    removedownload()
 
 
 if __name__ == "__main__":
