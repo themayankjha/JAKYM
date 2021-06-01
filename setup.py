@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="jakym",
-    version="0.3.2",
+    version="0.3.3",
     author="Mayank Jha",
     author_email="jhamayank159@gmail.com",
     description="Just Another Konsole YouTube-Music",

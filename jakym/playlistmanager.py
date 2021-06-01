@@ -1,47 +1,45 @@
 import jakym.downloader as downloader
 import jakym.player as player
-import random , os
+
+import random ,tempfile
 from termcolor import colored
 
 class Playlist:
 
     def __init__(self):
-        self.playlist=[]
+        self.queuedplaylist=[]
+        self.playedplaylist=[]
 
     def returnsong(self):
-        song=self.playlist.pop(0)
+        song=self.queuedplaylist.pop(0)
+        self.playedplaylist.append(song)
         return song
 
     def addsong(self,query):
-        self.playlist.append(query+" song")
+        self.queuedplaylist.append(query+" song")
 
-    def downloadsong(self,song):
-        meta=downloader.download(song)
+    def downloadsong(self,song,dir):
+        meta=downloader.download(song,dir)
         return meta
     
     def shuffleplaylist(self):
-            random.shuffle(self.playlist)
+            random.shuffle(self.queuedplaylist)
             print("Queue Shuffled")
 
-    def playsong(self,meta):
+    def playsong(self,meta,dir):
         print(colored("Currently Playing : " + meta['title'],'yellow'))
-        player.playmusic('downloads/'+meta['id'])
-
-def cleandownload():
-    dir ='downloads'
-    try:
-        for file in os.scandir(dir):
-            os.remove(file.path)
-    except:
-        print("Failed Cleaning")
+        player.playmusic(dir.name+'/'+meta['id'])
+    
+    def returnplaylist(self):
+        allplaylist=self.playedplaylist+self.queuedplaylist
+        return allplaylist
 
 def makedownload():
+    dir = tempfile.TemporaryDirectory()
+    return dir
+
+def removedownload(dir):
     try:
-        os.mkdir('downloads')
-    except:
-        pass
-def removedownload():
-    try:
-        os.rmdir('downloads')
+        dir.cleanup()
     except:
         pass

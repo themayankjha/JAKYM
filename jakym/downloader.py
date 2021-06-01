@@ -64,10 +64,10 @@ def ytplaylistparser(url,beg):
         beg=-1
     return tracklist,beg
 
-def download(link):
+def download(link,dir):
     options={
     'format': 'aac/mp3/ogg/wav/3gp/m4a/mp4',
-    'outtmpl': 'downloads/%(id)s',
+    'outtmpl': dir.name+'/%(id)s',
     'quiet':'True'
     }
     print("Downloading")
