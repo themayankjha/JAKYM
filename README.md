@@ -79,7 +79,7 @@ Enjoy jakym
 
 | Version     | Improvements    |
 | ----------- | -----------     |
-| 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments |
+| 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments, Fixed colour issues on Windows |
 | 0.3.1       | Bug fixes and Shuffle |
 | 0.3         | Added Youtube Playlist support, Improved Readme |
 | 0.2         | Added Spotify playlist support, Bug fixes |
