@@ -31,7 +31,7 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.A command line bas
 - Enter a songname in command window to search for song or just enter its youtube link to play directly from a link.
 - Jakym will queue the song once you type it and allow you to add the next song.
 - Type ```shuffle``` to shuffle your queue.
-- Use ```load``` to load a playlist and ```save``` to save your playlist. Include the trailing slash in path i.e. specify path as "C:\Users\Lex\Music\" or "/home/lex/Projects/jakym/".
+- Use ```load``` to load a playlist and ```save``` to save your playlist. Include the trailing slash in path i.e. specify path as ```C:\Users\Lex\Music\``` or ```/home/lex/Projects/jakym/```.
 - The queue operates independent of the command window and plays the song on a separate thread.
 - To exit the command window and hence the application simply type ```exit```.
 
