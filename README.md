@@ -80,7 +80,7 @@ Enjoy jakym
 ## Version history
 
 | Version     | Improvements    |
-| ----------- | -------------------    |
+| ----------- | ------------------    |
 | 0.3.3       | Better temporary file management, Playlist management support |
 | 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments, Fixed colour issues on Windows |
 | 0.3.1       | Bug fixes and Shuffle |
