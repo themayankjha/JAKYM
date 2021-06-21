@@ -8,7 +8,7 @@ I wanted to create this application so that I could use the command line to play
 
 I have spent a lot of time looking through numerous CLI based music players. But they either required setting up lots of things or needed premium features to function and sometimes flat out didn't work, even after tinkering for hours. Hence nstead of looking for a solution, I thought that I should code it myself.
 
-So I present to you JAKYM, Just Another Konsole YouTube-Music.
+So I present to you JAKYM, Just Another Konsole YouTube-Music.A command line based Youtube music player written in Python with both Spotify and Youtube playlist support and easy on memory.
 
 ![Screenshot](img/screenshot.gif?raw=true "screenshot")
 
@@ -19,6 +19,7 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 - Run the program by using jakym command ``` jakym ```.You can also specify arguments to easily play a playlist or song. The available options can be seen via ```jakym -h```
 - Use ```jakym -s "link"``` or ```jakym -y "link"``` to instanly start up by queuing a playlist without having to use the command window.
 - You can also use ```jakym -p "song 1" "song 2" "song 3"``` to queue up multiple songs.
+- To instanty queue a saved jakym playlist run ```jakym -p playlistpath playlistname```.
 - This will launch into jakym command window.
 ![Help_Image](img/help.png?raw=true "screenshot")
 
@@ -29,7 +30,8 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.
 - Type ```youtube``` to play music using youtube playlist
 - Enter a songname in command window to search for song or just enter its youtube link to play directly from a link.
 - Jakym will queue the song once you type it and allow you to add the next song.
-- Type ```shuffle``` to shuffle your queue
+- Type ```shuffle``` to shuffle your queue.
+- Use ```load``` to load a playlist and ```save``` to save your playlist. Include the trailing slash in path i.e. specify path as "C:\Users\Lex\Music\" or "/home/lex/Projects/jakym/".
 - The queue operates independent of the command window and plays the song on a separate thread.
 - To exit the command window and hence the application simply type ```exit```.
 
@@ -78,7 +80,8 @@ Enjoy jakym
 ## Version history
 
 | Version     | Improvements    |
-| ----------- | -----------     |
+| ----------- | -------------------    |
+| 0.3.3       | Better temporary file management, Playlist management support |
 | 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments, Fixed colour issues on Windows |
 | 0.3.1       | Bug fixes and Shuffle |
 | 0.3         | Added Youtube Playlist support, Improved Readme |

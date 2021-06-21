@@ -25,12 +25,14 @@ def playyoutube(link):
         songavailable.set()
 
 def saveplaylist(path,name):
-    with open(path+'jaylist.json', 'w+', encoding='utf-8') as f:
+    with open(path+'jaylist.json', 'a+', encoding='utf-8') as f:
+        f.seek(0)
         try:
             playlistdata=json.load(f)
         except:
             playlistdata={}
         playlistdata[name]=musicplaylist.returnplaylist()
+        f.truncate(0)
         json.dump(playlistdata, f, ensure_ascii=False, indent=4)
     print("Successfully Saved")
 
