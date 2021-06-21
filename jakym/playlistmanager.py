@@ -1,9 +1,6 @@
 import jakym.downloader as downloader
 import jakym.player as player
 
-import downloader as downloader
-import player as player
-
 import random ,tempfile
 from termcolor import colored
 
