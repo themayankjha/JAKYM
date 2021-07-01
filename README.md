@@ -1,16 +1,16 @@
 # Just Another Konsole YouTube-Music
 
-[![Downloads](https://static.pepy.tech/personalized-badge/jakym?period=total&units=international_system&left_color=blue&right_color=lightgrey&left_text=Total+Installs)](https://pepy.tech/project/jakym)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Downloads](https://static.pepy.tech/personalized-badge/jakym?period=total&units=international_system&left_color=blue&right_color=lightgrey&left_text=Total+Installs)](https://pepy.tech/project/jakym) [![PyPI license](https://img.shields.io/pypi/l/jakym?color=blue&style=plastic)](https://pypi.python.org/pypi/jakym/)
 
 ## Overview
 
-I wanted to create this application so that I could use the command line to play music easily. I often play games and listen to music simultaneously but using either Spotify or playing music in a browser takes much-needed resources from my CPU and RAM.
+My motivation for creating jakym comes because I wanted to create an application that I could use to play music comfortably from the command line. I often play games and listen to music simultaneously but using either Spotify or playing music in a browser takes much-needed resources from my CPU and RAM.
 
-I have spent a lot of time looking through numerous CLI based music players. But they either required setting up lots of things or needed premium features to function and sometimes flat out didn't work, even after tinkering for hours. Hence nstead of looking for a solution, I thought that I should code it myself.
+I have spent a lot of time looking through numerous CLI based music players. But they either required setting up lots of things or needed premium features to function and sometimes flat out didn't work, even after tinkering for hours. Hence, instead of looking for a solution, I thought that I could code it myself.
 
 So I present to you JAKYM, Just Another Konsole YouTube-Music.A command line based Youtube music player written in Python with both Spotify and Youtube playlist support and easy on memory.
 
-![Screenshot](img/screenshot.gif?raw=true "screenshot")
+![Screenshot](https://raw.githubusercontent.com/themayankjha/JAKYM/master/img/screenshot.gif "screenshot")
 
 ## Usage
 
@@ -19,21 +19,30 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.A command line bas
 - Run the program by using jakym command ``` jakym ```.You can also specify arguments to easily play a playlist or song. The available options can be seen via ```jakym -h```
 - Use ```jakym -s "link"``` or ```jakym -y "link"``` to instanly start up by queuing a playlist without having to use the command window.
 - You can also use ```jakym -p "song 1" "song 2" "song 3"``` to queue up multiple songs.
-- To instanty queue a saved jakym playlist run ```jakym -p playlistpath playlistname```.
+- To instanty queue a saved jakym playlist run ```jakym -l playlistpath playlistname```.
 - This will launch into jakym command window.
-![Help_Image](img/help.png?raw=true "screenshot")
+
+![Help_Image](https://raw.githubusercontent.com/themayankjha/JAKYM/master/img/help.png "screenshot")
 
 ### Using Jakym Command Window
 
 - The program opens up into the jakym command window.
-- Type ```spotify``` to play music using spotify playlist
-- Type ```youtube``` to play music using youtube playlist
+- Use ```commands``` to view all available commands.
 - Enter a songname in command window to search for song or just enter its youtube link to play directly from a link.
 - Jakym will queue the song once you type it and allow you to add the next song.
-- Type ```shuffle``` to shuffle your queue.
-- Use ```load``` to load a playlist and ```save``` to save your playlist. Include the trailing slash in path i.e. specify path as ```C:\Users\Lex\Music\``` or ```/home/lex/Projects/jakym/```.
 - The queue operates independent of the command window and plays the song on a separate thread.
 - To exit the command window and hence the application simply type ```exit```.
+
+#### Commands
+
+- Type ```spotify``` to play music using spotify playlist
+- Type ```youtube``` to play music using youtube playlist
+- Use ```rm``` to remove the last queued song from the playlist.
+- Type ```shuffle``` to shuffle your queue.
+- Use ```load``` to load a playlist and ```save``` to save your playlist. Include the trailing slash in path i.e. specify path as ```C:\Users\Lex\Music\``` or ```/home/lex/Projects/jakym/```.
+- Use ```play``` , ```pause```, ```next```, ```back``` to control the playback.
+- Use ```repeat all```, ```repeat song``` and ```repeat off```to control song repetition.
+- Use ```seek``` with an integer like 10 or -10 to control the current song.
 
 ## Installation
 
@@ -48,7 +57,7 @@ ffmpeg is required for this program to work correctly. Install ffmpeg by followi
 
 ### Installing simpleaudio
 
-simpleaudio is an optional pydub dependency, however as it is essential for proper working of jakym. Not installing simpleaudio gives major issues on both Linux and Windows.
+simpleaudio is an optional pydub dependency, however it is essential for proper working of jakym as the playback depends on simpleaudio.
 
 #### On Linux
 
@@ -64,7 +73,7 @@ simpleaudio is an optional pydub dependency, however as it is essential for prop
 
 - Install by using pypi :-``` pip install jakym ```
 
-- Run using jakym command ``` jakym ``` or call it as a python module ```python -m jakym```
+- Run using jakym command ``` jakym ```
 
 Violla jakym is now installed!
 
@@ -81,6 +90,7 @@ Enjoy jakym
 
 | Version     | Improvements    |
 | ----------- | ------------------    |
+| 0.4.0       | Playback controls, Bug fixes
 | 0.3.3       | Better temporary file management, Playlist management support |
 | 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments, Fixed colour issues on Windows |
 | 0.3.1       | Bug fixes and Shuffle |

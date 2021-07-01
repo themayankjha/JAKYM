@@ -1,8 +1,7 @@
 from youtube_dl import YoutubeDL
 from requests import get
 from bs4 import BeautifulSoup
-import re
-import json
+import re , json ,tempfile
 
 def spotifyparser(url):
     print("Pinging "+url)
@@ -69,7 +68,7 @@ def download(link,dir):
     'outtmpl': dir.name+'/%(id)s',
     'quiet':'True'
     }
-    print("Downloading")
+    print("Downloading",link)
     with YoutubeDL(options) as ytdl:
         try:
             get(link)
@@ -79,3 +78,13 @@ def download(link,dir):
             meta=ytdl.extract_info(link, download=True)
     print("Done Downloading")
     return meta
+
+def makedownload():
+    dir = tempfile.TemporaryDirectory()
+    return dir
+
+def removedownload(dir):
+    try:
+        dir.cleanup()
+    except:
+        pass
