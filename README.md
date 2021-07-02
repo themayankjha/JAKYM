@@ -4,11 +4,13 @@
 
 ## Overview
 
-My motivation for creating jakym comes because I wanted to create an application that I could use to play music comfortably from the command line. I often play games and listen to music simultaneously but using either Spotify or playing music in a browser takes much-needed resources from my CPU and RAM.
+My motivation for creating JAKYM came from my wish to create an application, that I could use to play music comfortably from the command line. I often play games and listen to music simultaneously, but using either Spotify or playing music in a browser takes a lot of resources from both my CPU and RAM.
 
-I have spent a lot of time looking through numerous CLI based music players. But they either required setting up lots of things or needed premium features to function and sometimes flat out didn't work, even after tinkering for hours. Hence, instead of looking for a solution, I thought that I could code it myself.
+I spent a lot of time looking through numerous CLI based music players, but they either require setting up a bunch of things, or required premium features to function; sometimes they didn't work at all, even after tinkering for hours.
 
-So I present to you JAKYM, Just Another Konsole YouTube-Music.A command line based Youtube music player written in Python with both Spotify and Youtube playlist support and easy on memory.
+Hence, instead of tearing my eyes out looking for a solution, I thought that I could code it myself.
+
+So I present to you JAKYM, or "Just Another Konsole YouTube-Music": a command-line Youtube music player, written in Python with both Spotify and Youtube playlist support, easy on both memory and CPU resources.
 
 ![Screenshot](https://raw.githubusercontent.com/themayankjha/JAKYM/master/img/screenshot.gif "screenshot")
 
@@ -16,10 +18,10 @@ So I present to you JAKYM, Just Another Konsole YouTube-Music.A command line bas
 
 ### Using Command Line Options
 
-- Run the program by using jakym command ``` jakym ```.You can also specify arguments to easily play a playlist or song. The available options can be seen via ```jakym -h```
+- Run it by using jakym command ``` jakym ```.You can also specify arguments to easily play a playlist or song. The available options can be seen via ```jakym -h```
 - Use ```jakym -s "link"``` or ```jakym -y "link"``` to instanly start up by queuing a playlist without having to use the command window.
 - You can also use ```jakym -p "song 1" "song 2" "song 3"``` to queue up multiple songs.
-- To instanty queue a saved jakym playlist run ```jakym -l playlistpath playlistname```.
+- To instantly queue a saved jakym playlist run ```jakym -l playlistpath playlistname```.
 - This will launch into jakym command window.
 
 ![Help_Image](https://raw.githubusercontent.com/themayankjha/JAKYM/master/img/help.png "screenshot")
@@ -50,7 +52,7 @@ To Update jakym simply run ```pip install --upgrade jakym```
 
 ### Installing ffmpeg
 
-ffmpeg is required for this program to work correctly. Install ffmpeg by following these steps :-
+ffmpeg is required for this program to work correctly. Install ffmpeg by following these steps: 
 
 - On Linux - <https://www.tecmint.com/install-ffmpeg-in-linux/>
 - On Windows - <https://www.wikihow.com/Install-FFmpeg-on-Windows>
@@ -81,10 +83,10 @@ Enjoy jakym
 
 ## How It Works
 
-- The program starts and runs two threads, one to input music into the playlist and the other to iterate over the playlist and download the corresponding music and play it.
+- The program starts and runs two threads, one to input music into the playlist and the other to iterate over the playlist, download the corresponding music and play it.
 - The youtube-dl library does most of the heavy lifting of both parsing links and downloading them into a suitable file format.
 - The pydub and simpleaudio libraries provide cross-platform audio playback without any issues but setting up simpleaudio on windows and Linux take a different approach.
-- The program runs until user specifically types exit.
+- The program runs until user types exit.
 
 ## Version history
 
