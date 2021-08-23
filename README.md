@@ -48,11 +48,13 @@ So I present to you JAKYM, or "Just Another Konsole YouTube-Music": a command-li
 
 ## Installation
 
+For Arch Linux users, jakym is available in the AUR. Simply use your favourate helper to get it.
+
 To Update jakym simply run ```pip install --upgrade jakym```
 
 ### Installing ffmpeg
 
-ffmpeg is required for this program to work correctly. Install ffmpeg by following these steps: 
+ffmpeg is required for this program to work correctly. Install ffmpeg by following these steps:
 
 - On Linux - <https://www.tecmint.com/install-ffmpeg-in-linux/>
 - On Windows - <https://www.wikihow.com/Install-FFmpeg-on-Windows>
