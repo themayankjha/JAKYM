@@ -2,6 +2,7 @@ import jakym.downloader as downloader
 from jakym.playlistmanager import Playlist
 from jakym.player import wait
 
+
 import threading, argparse, json, sys
 
 from pyfiglet import Figlet

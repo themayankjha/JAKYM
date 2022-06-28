@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="jakym",
-    version="0.4.0",
+    version="0.4.1",
     author="Mayank Jha",
     author_email="jhamayank159@gmail.com",
     description="Just Another Konsole YouTube-Music",
@@ -18,7 +18,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-          'youtube_dl',
+          'yt_dlp',
           'pyfiglet',
           'requests',
           'pydub',

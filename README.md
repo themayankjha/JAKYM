@@ -86,7 +86,7 @@ Enjoy jakym
 ## How It Works
 
 - The program starts and runs two threads, one to input music into the playlist and the other to iterate over the playlist, download the corresponding music and play it.
-- The youtube-dl library does most of the heavy lifting of both parsing links and downloading them into a suitable file format.
+- The yt-dlp library does most of the heavy lifting of both parsing links and downloading them into a suitable file format.
 - The pydub and simpleaudio libraries provide cross-platform audio playback without any issues but setting up simpleaudio on windows and Linux take a different approach.
 - The program runs until user types exit.
 
@@ -94,7 +94,8 @@ Enjoy jakym
 
 | Version     | Improvements    |
 | ----------- | ------------------    |
-| 0.4.0       | Playback controls, Bug fixes
+| 0.4.1        | Switched Backend From youtube-dl to yt-dlp for faster downloads , Add download progress counter|
+| 0.4.0       | Playback controls, Bug fixes    |
 | 0.3.3       | Better temporary file management, Playlist management support |
 | 0.3.2       | Fixed heavy CPU usage while Idling, Added command line arguments, Fixed colour issues on Windows |
 | 0.3.1       | Bug fixes and Shuffle |

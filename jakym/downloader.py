@@ -1,4 +1,4 @@
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 from requests import get
 from bs4 import BeautifulSoup
 import re , json ,tempfile
@@ -64,7 +64,7 @@ def ytplaylistparser(url,beg):
 
 def download(link,dir):
     options={
-    'format': 'aac/mp3/ogg/wav/3gp/m4a/mp4',
+    'format': 'wav/m4a/mp4',
     'outtmpl': dir.name+'/%(id)s',
     'quiet':'True'
     }
